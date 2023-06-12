@@ -1,0 +1,23 @@
+fragment PaymentGatewayInitializeSessionPayload on PaymentGatewayInitializeSession {
+  sourceObject {
+    __typename
+    ... on Checkout {
+      id
+      total: totalPrice {
+        gross {
+          ...Money
+        }
+      }
+    }
+    ... on Order {
+      id
+      total {
+        gross {
+          ...Money
+        }
+      }
+    }
+  }
+  data
+  amount
+}
